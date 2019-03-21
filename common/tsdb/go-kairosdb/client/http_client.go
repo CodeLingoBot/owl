@@ -49,17 +49,17 @@ func NewHttpClient(serverAddress string) Client {
 	}
 }
 
-// Returns a list of all metrics names.
+// GetMetricNames returns a list of all metrics names.
 func (hc *httpClient) GetMetricNames() (*response.GetResponse, error) {
 	return hc.get(hc.serverAddress + metricnames_ep)
 }
 
-// Returns a list of all tag names.
+// GetTagNames returns a list of all tag names.
 func (hc *httpClient) GetTagNames() (*response.GetResponse, error) {
 	return hc.get(hc.serverAddress + tagnames_ep)
 }
 
-// Returns a list of all tag values.
+// GetTagValues returns a list of all tag values.
 func (hc *httpClient) GetTagValues() (*response.GetResponse, error) {
 	return hc.get(hc.serverAddress + tagvalues_ep)
 }
@@ -100,7 +100,7 @@ func (hc *httpClient) Delete(qb builder.QueryBuilder) (*response.Response, error
 	return hc.postData(hc.serverAddress+deldatapoints_ep, data)
 }
 
-// Checks the health of the KairosDB Server.
+// HealthCheck checks the health of the KairosDB Server.
 func (hc *httpClient) HealthCheck() (*response.Response, error) {
 	resp, err := hc.sendRequest(hc.serverAddress+health_ep, "GET")
 	if err != nil {

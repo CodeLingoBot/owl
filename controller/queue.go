@@ -107,7 +107,7 @@ func (q *Queue) GetNoWait() (interface{}, error) {
 	return q.Get(-1)
 }
 
-// * If timeout less than 0, If Queue is empty, return (nil, ErrEmptyQueue).
+// If timeout less than 0, If Queue is empty, return (nil, ErrEmptyQueue).
 //
 // * If timeout equals to 0, block until get a value from Queue.
 //
@@ -154,7 +154,7 @@ func (q *Queue) PutNoWait(val interface{}) error {
 	return q.Put(val, -1)
 }
 
-// * If timeout less than 0, If Queue is full, return (nil, ErrFullQueue).
+// If timeout less than 0, If Queue is full, return (nil, ErrFullQueue).
 //
 // * If timeout equals to 0, block until put a value into Queue.
 //
@@ -202,7 +202,7 @@ func (q *Queue) size() int {
 	return q.items.Len()
 }
 
-// Return size of Queue.
+// Size returns size of Queue.
 func (q *Queue) Size() int {
 	q.mutex.Lock()
 	defer q.mutex.Unlock()
@@ -213,7 +213,7 @@ func (q *Queue) isempty() bool {
 	return (q.size() == 0)
 }
 
-// Return true if Queue is empty.
+// IsEmpty returns true if Queue is empty.
 func (q *Queue) IsEmpty() bool {
 	q.mutex.Lock()
 	defer q.mutex.Unlock()
@@ -224,7 +224,7 @@ func (q *Queue) isfull() bool {
 	return (q.maxSize > 0 && q.maxSize <= q.size())
 }
 
-// Return true if Queue is full.
+// IsFull returns true if Queue is full.
 func (q *Queue) IsFull() bool {
 	q.mutex.Lock()
 	defer q.mutex.Unlock()

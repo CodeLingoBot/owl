@@ -423,7 +423,7 @@ func (d *db) GetStrategyEventProcessRecord(eventID int64) []*StrategyEventProces
 	return strategyEventProcess
 }
 
-// GetAlarmRecord 获取报警历史记录
+// GetAlarmRecords 获取报警历史记录
 func (d *db) GetAlarmRecords(eventID int64, order, limit string) (records []*AlarmRecord, total int) {
 	records = make([]*AlarmRecord, 0)
 	events := []*StrategyEventRecord{}
@@ -564,7 +564,7 @@ func (d *db) GetTriggerTemplates(strategyTemplateID int) []*TriggerTemplate {
 	return triggerTemplates
 }
 
-// GetStrategyTemplate 获取多个策略模板
+// GetStrategyTemplates 获取多个策略模板
 func (d *db) GetStrategyTemplates() []*StrategyTemplate {
 	strategyTemplates := []*StrategyTemplate{}
 	if err := d.Select(&strategyTemplates, "SELECT * FROM strategy_template"); err != nil {
